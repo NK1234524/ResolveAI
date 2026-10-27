@@ -1,2 +1,2 @@
-# Ops.ai
-AI Business Agen
+# ResolveAI
+AI assisted Incident Management System
