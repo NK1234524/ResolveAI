@@ -11,3 +11,5 @@ Figma Design: https://www.figma.com/design/WqHiD7hpAnPwTChJzUvnAE/UI-UX-ResolveA
 ![Incident Details design page](image-2.png)
 
 The design covers the core workflow: incident reporting, AI assessment, priority recommendation, team assignment, and resolution tracking.
+
+# Workflow of the System
