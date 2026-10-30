@@ -11,6 +11,14 @@ class IncidentCreate(BaseModel):
         min_length = 10
     )
 
+# Update response of the data
+class IncidentUpdate(BaseModel):
+    title:str|None = Field(default= None,min_length=5,max_length=200)
+    description:str|None = Field(default = None,min_length =10)
+    priority :str|None = None
+    status: str|None =None
+    team_id: int|None = None
+
 # Defines the data returned by the API
 class IncidentResponse(BaseModel):
     id:int
