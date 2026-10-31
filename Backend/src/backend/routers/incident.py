@@ -10,6 +10,20 @@ router = APIRouter(
     prefix = "/incidents", # All endpoints start with the /incidents
     tags  = ["Incidents"]  # Groups these endpoints under the incident section in Swagger UI
 )
+# Get all the optinal filters
+@router.get("/",response_model = list[IncidentResponse])
+def get_all_incidents(
+    status:str|None=None,
+    priority:str|None=None,
+    db:Session=Depends(get_db)
+):
+    query = db.query(Incident)
+
+    if status:
+        query = query.filter(Incident.status==status)
+    if priority:
+        query = query.filter(Incident.priority == priority)
+    return query.all()
 
 # Create Incident
 
@@ -64,7 +78,7 @@ def get_incident(
     return incident
 
 # Update Incident
-@router.put("/{incident_id}",response_model= IncidentResponse)
+@router.patch("/{incident_id}",response_model= IncidentResponse)
 def update_incident(
     incident_id:int,
     incident_data:IncidentUpdate,
@@ -151,3 +165,4 @@ def get_incident_actionlogs(
             detail = "Incident not 404"
         )
     return incident.action_logs
+
