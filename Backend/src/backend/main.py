@@ -4,6 +4,7 @@ from sqlalchemy import text
 from backend.routers.incident import router as incident_router
 from backend.routers.team import router as team_router
 from backend.routers.actionLog import router as actionlog_router
+from backend.services.gemini_service import test_gemini_connection as gemini_con
 app = FastAPI( # Arguments are for instantiation. Easy to understand and maintain the code.
     title="ResolveAI",
     description = "Ai-powered incident management system",
