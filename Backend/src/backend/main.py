@@ -3,6 +3,7 @@ from .DB.database import engine
 from sqlalchemy import text
 from backend.routers.incident import router as incident_router
 from backend.routers.team import router as team_router
+from backend.routers.actionLog import router as actionlog_router
 app = FastAPI( # Arguments are for instantiation. Easy to understand and maintain the code.
     title="ResolveAI",
     description = "Ai-powered incident management system",
@@ -13,7 +14,8 @@ app = FastAPI( # Arguments are for instantiation. Easy to understand and maintai
 app.include_router(incident_router)
 # For Teams
 app.include_router(team_router)
-
+# For ActionLog
+app.include_router(actionlog_router)
 
 #root
 @app.get("/")

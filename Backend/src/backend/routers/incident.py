@@ -134,3 +134,20 @@ def delete_incident(
             status_code = 500,
             detail = "Failed to delete the incidents"
         )
+
+# Get incidents actions-logs
+@router.get("/{incident_id}/action-logs")
+def get_incident_actionlogs(
+    incident_id:int,
+    db:Session = Depends(get_db)
+):
+    incident = db.query(Incident).filter(
+        Incident.id == incident_id
+    ).first()
+
+    if not incident:
+        raise HTTPException(
+            status_code = 404,
+            detail = "Incident not 404"
+        )
+    return incident.action_logs
