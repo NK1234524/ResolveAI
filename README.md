@@ -1,2 +1,2 @@
 # ResolveAI
-AI assisted Incident Management System
+AI-driven Incident management & resolution system.
