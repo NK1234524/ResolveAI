@@ -114,10 +114,12 @@ def analyze_incident(incident_report: str):
                 "Gemini authentication failed. Check API configuration."
             ) from e
 
-        # elif e.code >= 500:
-        #     raise RuntimeError(
-        #         "Gemini service is temporarily unavailable."
-        #     ) from e
+       
+
+        elif e.code == 503:
+            raise RuntimeError(
+                "Gemini is temporarily unavailable.Try again later!!"
+            )
 
         else:
             raise RuntimeError(
