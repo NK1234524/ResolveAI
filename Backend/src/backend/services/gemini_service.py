@@ -93,6 +93,10 @@ def analyze_incident(incident_report: str):
         return validated_data
 
     # Exception handling for Gemini errors
+    except httpx.RemoteProtocolError as e :
+        raise RuntimeError(
+            "Gemini connection was interrupted.please try later."
+        )
     except ValidationError as e:
         raise ValueError(
             "Gemini returned data that failed validation."
