@@ -268,7 +268,7 @@ Make sure you have the following installed:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/ResolveAI.git
+git clone https://github.com/NK1234524/ResolveAI.git
 cd ResolveAI/Backend
 ```
 
