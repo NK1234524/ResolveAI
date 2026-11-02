@@ -5,6 +5,8 @@ from backend.routers.incident import router as incident_router
 from backend.routers.team import router as team_router
 from backend.routers.actionLog import router as actionlog_router
 from backend.services.gemini_service import test_gemini_connection as gemini_con
+from backend.routers import ai
+
 app = FastAPI( # Arguments are for instantiation. Easy to understand and maintain the code.
     title="ResolveAI",
     description = "Ai-powered incident management system",
@@ -17,7 +19,8 @@ app.include_router(incident_router)
 app.include_router(team_router)
 # For ActionLog
 app.include_router(actionlog_router)
-
+# For ai output validation
+app.include_router(ai.router)
 #root
 @app.get("/")
 def root():

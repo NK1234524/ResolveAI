@@ -21,6 +21,44 @@ class Incident(Base):
         Text,
         nullable=False
     )
+    category: Mapped[str] = mapped_column(
+    String(30),
+    nullable=False
+    )
+
+    location: Mapped[str | None] = mapped_column(
+    String(200),
+    nullable=True
+    )
+
+    impact: Mapped[str] = mapped_column(
+    String(20),
+    nullable=False
+    )
+
+    urgency: Mapped[str] = mapped_column(
+    String(20),
+    nullable=False
+    )
+
+    deadline:Mapped[datetime|None]=mapped_column(
+        DateTime(timezone=True),
+        nullable = True
+    )
+
+    idempotency_key:Mapped[str|None]=mapped_column(
+            String(128),
+            unique=True,
+            nullable=True
+        )
+    
+    request_hash:Mapped[str|None]=mapped_column(
+            String(64),
+            nullable=True
+        )
+    
+
+    
 
     priority: Mapped[str] = mapped_column(
         String(20),
@@ -47,6 +85,7 @@ class Incident(Base):
         index = True
     )
 
+    
     team = relationship("Team",back_populates = "incidents")
     action_logs = relationship("ActionLog",back_populates = "incident")
 
